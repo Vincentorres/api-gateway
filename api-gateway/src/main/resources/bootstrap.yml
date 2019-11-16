@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    config:
+      discovery:
+        serviceId: CONFIG
+        enabled: true
+      profile: dev
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9901/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  security:
+    enabled: false
+zuul:
+  routes:
+    # 简洁写法
+    product: /myProduct/**
+    config: /dwj/**
+    order: /oox/**
+
+#    order:
+#      path: /oox/**
+#      serviceId: order
+#      sensitiveHeaders:
+
+
+
+  #排除某些路径
+#  ignored-patterns:
+#    - /oox/**
+
+#如果您通过指定URL配置了Zuul路由，则需要使用
+
+  max:
+    host:
+      connections: 500
+  host:
+    socket-timeout-millis: 60000
+    connect-timeout-millis: 60000
+#如果Zuul使用服务发现，则需要使用
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+#熔断机制超时
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

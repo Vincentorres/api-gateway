@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: product
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: zghx_dev
+    password: zghx_dev
+    url: jdbc:mysql://180.167.245.106:13306/zghx_ebscms?useUnicode=true&allowMultiQueries=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+  jpa:
+    show-sql: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9901/eureka/,http://localhost:9902/eureka/,http://localhost:9903/eureka/
+server:
+  port: 9801

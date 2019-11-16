@@ -1,0 +1,31 @@
+server:
+  port: 9011
+spring:
+  application:
+    name: config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Vincentorres/config-repository.git
+          username: 592731889@qq.com
+          password: 15050992871zsc
+          basedir: D:/java/idea_work/SpringCloud_shell/config/src/main/basedir
+          force-pull: true
+          skip-ssl-validation: true
+    bus:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9901/eureka/
+      #,http://localhost:9902/eureka/,http://localhost:9903/eureka/
+management:
+  endpoints:
+    web:
+      expose:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
